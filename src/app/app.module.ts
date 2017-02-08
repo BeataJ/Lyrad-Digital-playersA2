@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TeamModule } from './team/team.module';
-import { PlayerModule } from './player/player.module';
-import { AppRoutingModule } from './app.routing';
 import { NotFoundComponent } from './not-found.component';
+import { AppRoutingModule } from './app.routing';
+import { TeamModule } from './team/team.module';
+
 
 
 @NgModule({
@@ -20,9 +20,8 @@ import { NotFoundComponent } from './not-found.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    TeamModule,
-    PlayerModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TeamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
