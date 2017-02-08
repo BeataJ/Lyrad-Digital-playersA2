@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { PlayerComponent } from './player.component';
 import { PlayerRoutingModule } from './player.routing';
-import { CommonModule } from '../common/common.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, PlayerRoutingModule, CommonModule],
+    imports: [BrowserModule, FormsModule, PlayerRoutingModule, SharedModule],
     declarations: [PlayerComponent],
 })
 export class PlayerModule {}

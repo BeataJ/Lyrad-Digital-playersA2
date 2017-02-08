@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { TeamComponent } from './team.component';
 import { TeamRoutingModule } from './team.routing';
-import { CommonModule } from '../common/common.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, TeamRoutingModule, CommonModule],
+    imports: [BrowserModule, FormsModule, TeamRoutingModule, SharedModule],
     
     declarations: [TeamComponent],
 })
