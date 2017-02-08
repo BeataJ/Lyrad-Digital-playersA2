@@ -10,6 +10,7 @@ import { PlayerModule } from './player/player.module';
 import { AppRoutingModule } from './app.routing';
 import { NotFoundComponent } from './not-found.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { NotFoundComponent } from './not-found.component';
     FormsModule,
     HttpModule,
     TeamModule,
-    //PlayerModule,
+    PlayerModule,
     AppRoutingModule
   ],
   providers: [],
