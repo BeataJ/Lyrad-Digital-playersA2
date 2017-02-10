@@ -5,8 +5,9 @@ import { TeamComponent } from './team/team.component';
 import { NotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
+    {path: 'player', loadChildren: 'app/player/player.module#PlayerModule'}, 
     {path: '', component: TeamComponent},
-    {path: 'player', loadChildren: 'app/player/player.module#PlayerModule'},
+    
     {path: '**', component: NotFoundComponent}
 ];
 

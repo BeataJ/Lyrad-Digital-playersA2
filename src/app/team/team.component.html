@@ -1,19 +1,26 @@
 <h2>Teams</h2>
 
-<table>
-  <tr>
-    <th>Team Name</th>
-    <th>Wins</th>
-    <th>Losses</th>
-    <th>Winning</th>
-    <th>Games behind</th>
-  </tr>
-  <tr *ngFor="let team of listOfTeams">
-    <td>{{team.teamName}}</td>
-    <td>{{team.numberOfWins}}</td>
-    <td>{{team.numberOfLosses}}</td>
-    <td>{{team.winOercentage}}</td>
-    <td>{{team.gamesBehind}}</td>
-  </tr>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Winning</th>
+      <th>Games behind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let team of listOfTeams">
+      <td>{{team.teamName}}</td>
+      <td>{{team.numberOfWins}}</td>
+      <td>{{team.numberOfLosses}}</td>
+      <td>{{team.winOercentage}}</td>
+      <td>{{team.gamesBehind}}</td>
+    </tr>
+  </tbody>
 </table>
  
+ <p>  
+  <a routerLink="/player">Click here for players</a>
+ </p>

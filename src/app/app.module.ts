@@ -6,10 +6,9 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
-import { AppRoutingModule } from './app.routing';
+
 import { TeamModule } from './team/team.module';
-
-
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,8 @@ import { TeamModule } from './team/team.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    TeamModule
+    TeamModule,
+    AppRoutingModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
