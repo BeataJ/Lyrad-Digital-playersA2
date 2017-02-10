@@ -10,13 +10,18 @@ import { Player } from '../shared/player';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  listOfPlayers: Player[]; 
+  listOfPlayers: Player[];
+  selectedPlayer: Player; 
    
   constructor(private apiService: RestApiService) { }
   
 
   ngOnInit() {
     this.listOfPlayers = this.apiService.getListOfPlayers();
+  }
+
+  setSelectedPlayer(selectedPlayer: Player){
+     this.selectedPlayer = selectedPlayer;
   }
 
 }
