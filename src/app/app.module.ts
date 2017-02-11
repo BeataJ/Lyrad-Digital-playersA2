@@ -9,11 +9,13 @@ import { NotFoundComponent } from './not-found.component';
 
 import { TeamModule } from './team/team.module';
 import { AppRoutingModule } from './app.routing';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    MainNavComponent,
   ],
   imports: [
     BrowserModule,
