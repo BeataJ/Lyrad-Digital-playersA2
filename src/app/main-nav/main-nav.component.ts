@@ -11,7 +11,7 @@ export class MainNavComponent implements OnInit {
   constructor(private _router:Router) { }
 
   isActive(url: string): boolean {
-    return url === this._router.url;
+  return url === this._router.url;
   }
 
   ngOnInit() {

@@ -8,6 +8,7 @@
       <th>Losses</th>
       <th>Winning</th>
       <th>Games behind</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -15,11 +16,18 @@
       <td>{{team.teamName}}</td>
       <td>{{team.numberOfWins}}</td>
       <td>{{team.numberOfLosses}}</td>
-      <td>{{team.winOercentage}}</td>
+      <td>{{team.winPercentage}}</td>
       <td>{{team.gamesBehind}}</td>
+      <td>
+        <a (click)="selectTeam(team)">
+          <i class="fa fa-edit"></i>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<app-team-edit [selectedTeam]="selectedTeam"></app-team-edit>
  
  <!--<p>  
   <a routerLink="/player">Click here for players</a>

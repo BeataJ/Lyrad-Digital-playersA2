@@ -1,13 +1,13 @@
 <nav class="navbar navbar-dark bg-inverse">
   <ul class="nav">
-    <li class="nav-item active" [class.active]="isActive('/')">
-      <a routerLink="/" class="nav-link">Home</a>
+    <li class="nav-item active" >
+      <a routerLink="/" class="nav-link" [class.active]="isActive('/')">Home</a>
     </li>
-    <li class="nav-item" [class.active]="isActive('/player')">
-      <a routerLink="/player" class="nav-link">Players</a>
+    <li class="nav-item" >
+      <a routerLink="/player" class="nav-link" [class.active]="isActive('player')">Players</a>
     </li>
-    <li class="nav-item" [class.active]="isActive('/team')">
-      <a routerLink="/team" class="nav-link">Teams</a>
+    <li class="nav-item" >
+      <a routerLink="/team" class="nav-link" [class.active]="isActive('team')">Teams</a>
     </li>
   </ul>
 </nav>
