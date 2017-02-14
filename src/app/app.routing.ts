@@ -1,12 +1,13 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { TeamComponent } from './team/team.component';
+import { PlayerComponent } from './player/player.component';
 import { NotFoundComponent } from './not-found.component';
 
+
 const routes: Routes = [
-    {path: 'player', loadChildren: 'app/player/player.module#PlayerModule'}, 
-    {path: '', component: TeamComponent},
+    {path: 'team', loadChildren: 'app/team/team.module#TeamModule'}, 
+    {path: '', component: PlayerComponent},
     
     {path: '**', component: NotFoundComponent}
 ];

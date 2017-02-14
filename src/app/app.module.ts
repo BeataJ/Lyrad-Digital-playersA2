@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
 
-import { TeamModule } from './team/team.module';
+import { PlayerModule } from './player/player.module';
 import { AppRoutingModule } from './app.routing';
 import { MainNavComponent } from './main-nav/main-nav.component';
 
@@ -21,7 +21,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    TeamModule,
+    PlayerModule,
     AppRoutingModule  
   ],
   providers: [],

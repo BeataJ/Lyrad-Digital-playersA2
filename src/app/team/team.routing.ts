@@ -3,8 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { TeamComponent } from './team.component';
 
+
+
 const routes: Routes = [
-    {path:'team', component: TeamComponent}
+    {
+        path:'', 
+        component: TeamComponent
+    }
+    
+    
 ];
 
 @NgModule ({

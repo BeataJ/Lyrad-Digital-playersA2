@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { PlayerComponent } from './player.component';
 import { PlayerRoutingModule } from './player.routing';
 import { SharedModule } from '../shared/shared.module';
 import { PlayerProfileComponent } from './player-profile/player-profile.component';
+import { RegistrationComponent } from './registration/registration.component';
+
+
 
 @NgModule({
-    imports: [CommonModule, FormsModule, PlayerRoutingModule, SharedModule],
-    declarations: [PlayerComponent, PlayerProfileComponent],
+    imports: [BrowserModule, FormsModule, PlayerRoutingModule, SharedModule],
+    declarations: [PlayerComponent, PlayerProfileComponent, RegistrationComponent],
 })
 export class PlayerModule {}
