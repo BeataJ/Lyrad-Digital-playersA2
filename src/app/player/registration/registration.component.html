@@ -3,51 +3,47 @@
 <form>
   <div class="form-group">
     <label for="firstName">First Name</label>
-    <input type="text" class="form-control" id="firtName" placeholder="Enter first name"/>
+    <input type="text" class="form-control" id="firtName" name="firstName" [(ngModel)]="registrationViewModel.firstName" placeholder="Enter first name"/>
   </div>
   <div class="form-group">
     <label for="lasttName">Last Name</label>
-    <input type="text" class="form-control" id="lastName" placeholder="Enter last name"/>
+    <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="registrationViewModel.lastName" placeholder="Enter last name"/>
   </div>
   <div class="form-group">
     <label for="email">Team Name</label>
-    <input type="text" class="form-control" id="email" placeholder="Enter email"/>
+    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="registrationViewModel.email" placeholder="Enter email"/>
   </div>
   <div class="form-group">
     <label for="Bio">Team Name</label>
-    <textarea class="form-control" id="bio" row="8" placeholder="Enter team bio"></textarea>
+    <textarea class="form-control" id="bio"  name="bio" [(ngModel)]="registrationViewModel.bio" row="8" placeholder="Enter team bio"></textarea>
   </div>
   <div class="form-group">
     <label for="dob">DOB</label>
-    <input type="date" class="form-control" id="dob" placeholder="Enter DOB"/>
+    <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="registrationViewModel.dob" placeholder="Enter DOB"/>
   </div>
   <div class="form-group">
     <label for="teamId">Team</label>
-     <select class="form-control" id="teamId">
+     <select class="form-control" id="teamId" name="teamId" [(ngModel)]="registrationViewModel.teamId">
        <option>Please Select...</option>
-       <option value="1">Atlanta Hawks</option>
-       <option value="2">Boston Celtics</option>
-       <option value="3">Charlotte Hornets</option>
-       <option value="4">Chicago Bulls</option>
-       <option value="5">Cleveland Cavaliers</option>
+       <option *ngFor="let team of teamLookupList" [value]="team.Id">{{team.Name}}</option>
      </select>
   </div>
   <div class="form-group">
       <label for="heightInFeet">Height</label>
       <div class="row">
         <div class="col-xs-4 col-sm-2">
-            <input type="number" class="form-control" id="heightInFeet" placeholder="Enter in feet"/>    
+            <input type="number" class="form-control" id="heightInFeet" name="heightInFeet" [(ngModel)]="registrationViewModel.heightInFeet" placeholder="Enter in feet"/>    
         </div>
         <div class="col-xs-1 height-label">feet</div>
         <div class="col-xs-4 col-sm-2">
-            <input type="number" class="form-control" id="heightInInches" placeholder="Enter in inches"/>    
+            <input type="number" class="form-control" id="heightInInches" name="heightInInches" [(ngModel)]="registrationViewModel.heightInInches" placeholder="Enter in inches"/>    
         </div>
         <div class="col-xs-1 height-label">inches</div>
       </div> 
          <label for="heightInFeet">Weight</label>
           <div class="row">
             <div class="col-xs-4 col-sm-2">
-                <input type="number" class="form-control" id="weight" placeholder="Enter in pounds"/>    
+                <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="registrationViewModel.weight" placeholder="Enter in pounds"/>    
             </div>
            <div class="col-xs-1 height-label">lbs</div>
          </div>   
@@ -57,31 +53,31 @@
     <div>
         <div class="form-check-inline">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="position" id="pointGuard" value="PointGuard">
+            <input type="radio" class="form-check-input"  name="position" [(ngModel)]="registrationViewModel.position" id="pointGuard" value="PointGuard">
             Point Guard
           </label>
         </div>
         <div class="form-check-inline">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="position" id="shootingGuard" value="ShootingGuard">
+            <input type="radio" class="form-check-input" name="position" [(ngModel)]="registrationViewModel.position" id="shootingGuard" value="ShootingGuard">
             Shooting Guard
           </label>
         </div>
         <div class="form-check-inline">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="position" id="smallForward" value="SmallForward">
+            <input type="radio" class="form-check-input" name="position" [(ngModel)]="registrationViewModel.position" id="smallForward" value="SmallForward">
             Small Forward
           </label>
         </div>
         <div class="form-check-inline">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="position" id="powerForward" value="PowerForward">
+            <input type="radio" class="form-check-input" name="position" [(ngModel)]="registrationViewModel.position" id="powerForward" value="PowerForward">
             Power Forward
           </label>
         </div>
         <div class="form-check-inline">
           <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="position" id="center" value="Center">
+            <input type="radio" class="form-check-input" name="position" [(ngModel)]="registrationViewModel.position" id="center" value="Center">
             Center
           </label>
         </div>
@@ -90,23 +86,17 @@
   <div class="form-group">
     <label for="brokenFoot">Post Injuries</label>
     <div>
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" id="brokenFoot" value="BrokenFoot">
-            Broken Foot
+          <label class="form-check-label" *ngFor="let injury of injuryLookupList; let i = index;">
+            <input type="checkbox" class="form-check-input" [name]="injuryLookupList[i]" [id]="injuryLookupList[i]" [value]="injury" (change)="addOrRemoveInjury($event.target.value)" >
+           {{injury}}
+
           </label>
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" id="kneeInjury" value="KneeInjury">
-            Knee Injury
-          </label>
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" id="ankleInjury" value="AnkleInjury">
-            Ankle Injury
-          </label>
+
    </div> 
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Enter passward"/>
+    <input type="password" class="form-control" id="passward" name="passward" [(ngModel)]="registrationViewModel.passward" placeholder="Enter passward"/>
   </div>
   <button type="button" class="btn btn-default btn-primary">Submit</button>
 </form>
