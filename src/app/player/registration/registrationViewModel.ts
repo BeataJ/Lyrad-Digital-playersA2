@@ -12,7 +12,7 @@ export class RegistrationViewModel {
     weight: number;
     injuries: string[];
     position:Position;
-    passward: string;
+    password: string;
 
     constructor() {
         this.injuries = [];

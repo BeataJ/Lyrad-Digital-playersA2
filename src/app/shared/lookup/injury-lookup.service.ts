@@ -4,7 +4,7 @@ import { MOCK_INJURY_LOOKUP } from './mock-injuries-lookup';
 
 @Injectable()
 export class InjuryLookupService {
-  getInjuriestLookup(): string[] {
+  getInjuriesLookup(): string[] {
       return MOCK_INJURY_LOOKUP;
   }
   
