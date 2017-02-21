@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { RegistrationViewModel } from './registrationViewModel';
 import { TeamLookup } from '../../shared/lookup/team-lookup';
@@ -12,12 +12,90 @@ import { TeamLookupService } from '../../shared/lookup/team-lookup.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm: NgForm;
-  @ViewChild('registrationForm') currentForm: NgForm;
+  registrationForm: FormGroup;
   registrationViewModel: RegistrationViewModel;
   teamLookupList: TeamLookup[];
   injuryLookupList: string[];
   injuryFieldList: string[];
+ 
+  constructor(
+    private injuryLookupService: InjuryLookupService,
+    private teamLookupService: TeamLookupService,
+    private fb: FormBuilder
+  ) { 
+    this.registrationViewModel = new RegistrationViewModel();
+  }
+
+  ngOnInit() {
+    this.teamLookupList = this.teamLookupService.getTeamsLookup();
+    this.injuryLookupList = this.injuryLookupService.getInjuriesLookup();
+    this.buildForm();
+    this.initialiseInjuryFieldList();
+  }
+
+  
+
+  addOrRemoveInjury(value: string) {
+    var indexOfEntry = this.registrationViewModel.injuries.indexOf(value);
+    
+    if(indexOfEntry < 0) {
+      this.registrationViewModel.injuries.push(value);
+    }
+    else {
+      this.registrationViewModel.injuries.splice(indexOfEntry, 1);
+    }
+  }
+
+  submit(){
+    this.registrationViewModel = this.registrationForm.value;
+    console.log(JSON.stringify(this.registrationViewModel));
+  }
+
+   private buildForm() {
+      this.registrationForm = this.fb.group({
+        'firstName': ['', [Validators.required]],
+        'lastName': ['', [Validators.required]],
+        'email': [''],
+        'biography': ['', [Validators.required]],
+        'dob': ['', [Validators.required]],
+        'teamId': ['', [Validators.required]],
+        'heightInFeet': ['', [Validators.required]],
+        'heightInInches': ['', [Validators.required]],
+        'weight': ['', [Validators.required]],
+        'position': ['', [Validators.required]],
+        'password': ['', [Validators.required]]
+      });
+
+       this.registrationForm.valueChanges.subscribe(data => this.onValueChanged(data));
+       this.onValueChanged();
+   }
+   
+    private onValueChanged(data?: any) {
+    if (!this.registrationForm) { return; }
+    const form = this.registrationForm;
+
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+  
+      if (control && control.dirty && control.invalid) {
+        const messages = this.validationMessages[field];
+        
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  private initialiseInjuryFieldList() {
+    this.injuryFieldList = [];
+
+    for(let injury of this.injuryLookupList) {
+      this.injuryFieldList.push(injury.trim().replace(" ", "").toLowerCase());
+    }
+  }
 
   private formErrors = {
     'firstName': '',
@@ -64,68 +142,4 @@ export class RegistrationComponent implements OnInit {
       'required': 'Password is required'
     }
   };
-  
-  constructor(
-    private injuryLookupService: InjuryLookupService,
-    private teamLookupService: TeamLookupService
-  ) { 
-    this.registrationViewModel = new RegistrationViewModel();
-  }
-
-  ngOnInit() {
-    this.teamLookupList = this.teamLookupService.getTeamsLookup();
-    this.injuryLookupList = this.injuryLookupService.getInjuriesLookup();
-    this.initialiseInjuryFieldList();
-  }
-
-  ngAfterViewChecked() {
-    this.formChanged();
-  }
-
-  formChanged() {
-    if (this.currentForm === this.registrationForm) { return; }
-    this.registrationForm = this.currentForm;
-    
-    if (this.registrationForm) {
-      this.registrationForm.valueChanges.subscribe(data => this.onValueChanged(data));
-    }
-  }
-
-  private onValueChanged(data?: any) {
-    if (!this.registrationForm) { return; }
-    const form = this.registrationForm.form;
-
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-  
-      if (control && control.dirty && control.invalid) {
-        const messages = this.validationMessages[field];
-        
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
-
-  private initialiseInjuryFieldList() {
-    this.injuryFieldList = [];
-
-    for(let injury of this.injuryLookupList) {
-      this.injuryFieldList.push(injury.trim().replace(" ", "").toLowerCase());
-    }
-  }
-
-  addOrRemoveInjury(value: string) {
-    var indexOfEntry = this.registrationViewModel.injuries.indexOf(value);
-    
-    if(indexOfEntry < 0) {
-      this.registrationViewModel.injuries.push(value);
-    }
-    else {
-      this.registrationViewModel.injuries.splice(indexOfEntry, 1);
-    }
-  }
 }

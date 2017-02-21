@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PlayerComponent } from './player.component';
 import { PlayerRoutingModule } from './player.routing';
@@ -11,7 +11,7 @@ import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, PlayerRoutingModule, SharedModule],
+    imports: [BrowserModule, ReactiveFormsModule, PlayerRoutingModule, SharedModule],
     declarations: [PlayerComponent, PlayerProfileComponent, RegistrationComponent],
 })
 export class PlayerModule {}
