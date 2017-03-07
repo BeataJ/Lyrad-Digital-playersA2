@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { TeamComponent } from './team.component';
 import { TeamRoutingModule } from './team.routing';
@@ -9,7 +9,7 @@ import { TeamEditComponent } from './team-edit/team-edit.component';
 
 
 @NgModule({
-    imports: [CommonModule, FormsModule, TeamRoutingModule, SharedModule],
+    imports: [CommonModule, ReactiveFormsModule, TeamRoutingModule, SharedModule],
     
     declarations: [TeamComponent, TeamEditComponent],
 })

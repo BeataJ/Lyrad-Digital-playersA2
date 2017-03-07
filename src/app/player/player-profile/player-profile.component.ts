@@ -10,5 +10,35 @@ import { Player } from '../../shared/player';
 export class PlayerProfileComponent  {
   @Input()
   selectedPlayer: Player;
+  editPosition = false;
+  editHeight = false;
+  editWeight = false;
 
+  getDisplayFlag(displayFlag: boolean): string {
+    return displayFlag ? 'inline': 'none';
+  }
+
+  showEditPosition() {
+    this.editPosition = true;
+  }
+
+  savePosition() {
+    this.editPosition = false;
+  }
+
+  showEditHeight() {
+    this.editHeight = true;
+  }
+
+  saveHeight() {
+    this.editHeight = false;
+  }
+
+  showEditWeight() {
+    this.editWeight = true;
+  }
+
+  saveWeight() {
+    this.editWeight = false;
+  }
 }
